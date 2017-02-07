@@ -1,0 +1,16 @@
+{
+  "name": "someproject",
+  "version": "1.0.0",
+  "description": "some p5 stuff to plya around with",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "p5": "^0.5.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

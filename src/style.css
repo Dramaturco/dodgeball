@@ -1,0 +1,23 @@
+.canvas {
+	width: 95%;
+	margin: auto;
+}
+body {
+	background-color: black;
+	color: white;
+	font-family: monospace;
+}
+ul {
+	font-size: 18;
+	list-style: square;
+}
+h1 {
+	text-align: center;
+	font-size: 36;
+	margin-top: 5;
+}
+h2 {
+	text-align: center;
+	font-size: 26;
+	margin-top: 5;
+}
