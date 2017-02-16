@@ -40,7 +40,7 @@ function Character(){
 		var distance = dist(this.pos.x, this.pos.y, pickup.pos.x, pickup.pos.y)
 		if(distance - this.radius - pickup.radius < 0){
 			pickup.visible = false;
-			this.radius++;
+            this.radius = 15 + level;
 			return true;
 		}
 	}

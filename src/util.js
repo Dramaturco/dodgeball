@@ -1,9 +1,6 @@
 function rndLaser(laser){
 	if(random() < 0.2){
-		if(random() > 0.5)
-			laser.horizontal = true;
-		else
-			laser.horizontal = false;
+		laser.horizontal = random() > 0.5;
 		if(!laser.fire){
 			laser.fire = true;
 			laser.generatePos();
@@ -40,18 +37,18 @@ function killPlayer(){
 }
 function newGame(){
 	pickCnt = 0;
+    level = 0;
 	pickThresh = floor(random(2,5));
 	pickup = new Pickup();
 	character = new Character();
-	console.debug(character);
 	scoreboard.reset();
 	dying = false;
-	for(let i = 0; i < numLasers; i++){
-		let hor = false;
-		if(random() > 0,5)
-			hor = true;
-		lasers[i] = new Laser(hor);
-	}
+    lasers = [];
+    lasers.push(new Laser(random() > 0.5));
+}
+function levelUp(){
+    level++;
+    lasers.push(new Laser(random() > 0.5));
 }
 
 function handleInput(){

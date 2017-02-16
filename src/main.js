@@ -8,9 +8,10 @@ var lasers = [];
 const tick = 50;								//Amount of Frames per Tick
 var clock = 0;
 const speed = 5;								//Player movementspeed
-var numLasers = 3;
 var hiScore = 0;
 
+var level = 0;                                  //integer to use in formulas to ramp up the difficulty
+var maxLevel = 5;
 var pickThresh = 0;								//when this is reached a pickup will spawn
 var pickCnt = 0;								//counter for when a pickup will spawn
 var killAnim = [50, 100, 150, 200]				//key frames for deathanimation
@@ -22,13 +23,15 @@ function setup(){
 	height = width/4 * 3;
 	canvas = createCanvas(width, height);
 	canvas.parent('canvas');
-	scoreboard = new Scoreboard(width - 100, 40);
+	scoreboard = new Scoreboard();
 	newGame();
 }
 function windowResized(){
 	width = windowWidth/12 * 7;
 	height = width/4 * 3;
 	resizeCanvas(width, height);
+    scoreboard.recalcPos();
+    pickup.recalcPos();
 }
 
 function draw(){
@@ -47,7 +50,7 @@ function draw(){
 		pickCnt++;
 		if(!pickup.visible){
 			if(pickCnt > pickThresh){
-				pickThresh = random(2,5);
+				pickThresh = floor(random(2,5));
 				pickCnt = 0;
 				pickup.spawn();
 			}

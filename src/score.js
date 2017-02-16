@@ -1,9 +1,14 @@
-function Scoreboard(posX, posY){
-	this.pos = createVector(posX, posY);
+function Scoreboard(){
+	this.pos = createVector(width - 100, 40);
 	this.score = 0;
 
 	this.increment = function(){
 		this.score++;
+        if(this.score % 5 == 0){
+            if(level < maxLevel){
+                levelUp();
+            }
+        }
 	}
 	this.reset = function(){
 		if(this.score > hiScore){
@@ -11,7 +16,9 @@ function Scoreboard(posX, posY){
 		}
 		this.score = 0;
 	}
-
+    this.recalcPos = function(){
+        this.pos = createVector(width - 100, 40);
+    }
 	this.render = function(){
 		let scorestring = "Score: " + this.score;
 		let hiScoreString = "Hi:    " + hiScore;
